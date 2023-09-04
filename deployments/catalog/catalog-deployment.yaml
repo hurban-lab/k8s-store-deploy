@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: catalog-deploy
+  namespace: store-sandbox
+  annotations:
+    buildNumber: "1.0"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: catalog
+  template:
+    metadata:
+      labels:
+        app: catalog
+      annotations:
+        buildNumber: "1.0"
+    spec:
+      containers:
+      - name: catalog-service
+        image: us-east1-docker.pkg.dev/hurban-lab/store/catalog:latest
+        readinessProbe:
+          httpGet:
+            path: "/actuator/health/readiness"
+            port: 8080
+          initialDelaySeconds: 5
+        ports:
+        - containerPort: 8080
+        env:
+          - name: APPLICATION_VERSION
+            value: "1.0"
+          - name: SERVER_PORT
+            value: "8080"
+---
