@@ -1,0 +1,22 @@
+# Gcloud initialize
+gcloud init
+
+# Gcloud Config
+gcloud config list
+gcloud auth list
+gcloud projects list
+gcloud info 
+gcloud config set project hurban-lab
+gcloud components install kubectl
+
+# Create a cloud cluster
+gcloud container --project "hurban-lab" clusters create-auto "store-sandbox-cluster" --region "us-east1" --release-channel "regular" --network "projects/hurban-lab/global/networks/default" --subnetwork "projects/hurban-lab/regions/us-east1/subnetworks/default" --cluster-ipv4-cidr "/17"
+
+# Verify K8s GKE Cluster details
+gcloud container clusters list
+
+# Verify K8s Cluster nodes created by GKE service
+kubectl get nodes -o wide
+kubectl config view
+kubectl config current-context
+kubectl config set-context --current --namespace=my-namespace
