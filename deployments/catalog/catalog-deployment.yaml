@@ -38,4 +38,19 @@ spec:
             value: "http://product-service.store-sandbox.svc.cluster.local"
           - name: PRODUCT_URI
             value: "/product/hello"
+          - name: GRAFANA_OTLP_CLOUD_INSTANCEID
+            valueFrom:
+              secretKeyRef:
+                name: grafana-credentials-secret
+                key: GRAFANA_ID
+          - name: GRAFANA_OTLP_CLOUD_APIKEY
+            valueFrom:
+              secretKeyRef:
+                name: grafana-credentials-secret
+                key: GRAFANA_KEY
+          - name: GRAFANA_OTLP_CLOUD_ZONE
+            valueFrom:
+              secretKeyRef:
+                name: grafana-credentials-secret
+                key: GRAFANA_ZONE
 ---
