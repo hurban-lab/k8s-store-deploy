@@ -32,4 +32,10 @@ spec:
             value: "1.0"
           - name: SERVER_PORT
             value: "8080"
+          - name: SPRING_PROFILES_ACTIVE
+            value: sandbox
+          - name: PRODUCT_HOST
+            value: "http://product-service.store-sandbox.svc.cluster.local"
+          - name: PRODUCT_URI
+            value: "/product/hello"
 ---
