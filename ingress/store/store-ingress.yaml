@@ -6,8 +6,9 @@ metadata:
   namespace: store-sandbox
   annotations:
     buildNumber: "1.0"
+    kubernetes.io/ingress.class: gce
 spec:
-  ingressClassName: store
+  ingressClassName: gce
   rules:
   - http:
       paths:
