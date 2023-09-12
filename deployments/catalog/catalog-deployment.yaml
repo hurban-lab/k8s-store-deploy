@@ -22,7 +22,7 @@ spec:
         image: us-east1-docker.pkg.dev/hurban-lab/store/catalog:latest
         readinessProbe:
           httpGet:
-            path: "/actuator/health/readiness"
+            path: "/catalog/health/readiness"
             port: 8080
           initialDelaySeconds: 5
         ports:
@@ -36,7 +36,7 @@ spec:
             value: sandbox
           - name: PRODUCT_HOST
             value: "http://product-service.store-sandbox.svc.cluster.local"
-          - name: PRODUCT_URI
+          - name: PRODUCT_GET-HELLO-URI
             value: "/product/hello"
           - name: GRAFANA_OTLP_CLOUD_INSTANCEID
             valueFrom:

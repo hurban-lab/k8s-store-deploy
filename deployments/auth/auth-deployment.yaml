@@ -22,7 +22,7 @@ spec:
         image: us-east1-docker.pkg.dev/hurban-lab/store/auth:latest
         readinessProbe:
           httpGet:
-            path: "/actuator/health/readiness"
+            path: "/auth/health/readiness"
             port: 8080
           initialDelaySeconds: 5
         ports:
